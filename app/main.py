@@ -2,6 +2,7 @@ from typing import Union
 
 from fastapi import FastAPI
 
+print("TESTE EXECUTANDO")
 app = FastAPI()
 
 
