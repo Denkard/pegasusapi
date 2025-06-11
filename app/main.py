@@ -3,7 +3,6 @@ from motor.motor_asyncio import AsyncIOMotorClient
 import os
 from contextlib import asynccontextmanager
 
-from mongodb import connect_mongodb
 from dotenv import load_dotenv
 
 load_dotenv()
