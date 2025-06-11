@@ -13,7 +13,7 @@ async def lifespan(app: FastAPI):
     # Load the ML model
     print('teste')
     app.mongodb_client = AsyncIOMotorClient(os.environ["MONGO_URI"])
-    app.mongodb = app.mongodb_client[os.environ.get("MONGO_DB_NAME", "meu_banco")]
+    app.mongodb = app.mongodb_client[os.environ.get("DB_EST", "listas_criadas")]
     print("🔌 MongoDB conectado com sucesso.")
     # EXECUTA ANTES
     yield
@@ -27,4 +27,5 @@ app = FastAPI(lifespan=lifespan)
 # Rota de exemplo
 @app.get("/")
 async def root():
-    return {"message": "API rodando com FastAPI e MongoDB!"}
+    return app.mongodb.find_one({})
+    #return {"message": "API rodando com FastAPI e MongoDB!"}
